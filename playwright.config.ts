@@ -12,7 +12,6 @@ const config: PlaywrightTestConfig = {
   reporter: [["dot"], ["allure-playwright"]],
   use: {
     actionTimeout: 0,
-    trace: "on-first-retry",
   },
   projects: [
     {

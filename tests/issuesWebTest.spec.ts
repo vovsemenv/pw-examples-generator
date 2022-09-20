@@ -1,6 +1,13 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { allure } from "allure-playwright";
-import { attachJiraIssue, attachMicroservice } from "./utils";
+import {
+  attachJiraIssue,
+  attachMicroservice,
+  authorize,
+  createNewEntity,
+  deleteNewEntity,
+} from "./utils";
+
 test.describe("IssuesWebTest", () => {
   test.beforeEach(() => {
     allure.label({ name: "layer", value: "web" });
@@ -13,13 +20,9 @@ test.describe("IssuesWebTest", () => {
     attachJiraIssue("AE-2");
     allure.story("Create new issue");
     attachMicroservice("Billing");
-  });
 
-  test("Adding note to advertisement", async () => {
-    allure.tag("web", "regress");
-    attachJiraIssue("AE-1");
-    allure.story("Create new issue");
-    attachMicroservice("Repository");
+    await authorize();
+    await createNewEntity("issue");
   });
 
   test("Closing new issue for authorized user", async () => {
@@ -27,5 +30,7 @@ test.describe("IssuesWebTest", () => {
     attachJiraIssue("AE-1");
     allure.story("Close existing issue");
     attachMicroservice("Repository");
+    await authorize();
+    await deleteNewEntity("issue");
   });
 });
