@@ -13,23 +13,21 @@ test.describe("ShipmentRequestsWebTest", () => {
     allure.label({ name: "layer", value: "e2e" });
     allure.owner("baev");
     allure.feature("Shipment Requests");
-    await authorize();
+    authorize();
   });
   
-  test("Authenticated user with confirmed payment can request a shipment", async () => {
+  test("Authenticated user with confirmed payment can request a shipment", () => {
     allure.tag("e2e", "regress", "smoke", "regular");
     attachJiraIssue("AD-7");
     allure.story("Manage shipments");
     attachMicroservice("Shipment");
-
-    await createNewEntity("shipment");
+    createNewEntity("shipment");
   });
-  test("Authenticated user with confirmed payment can cancel a shipment", async () => {
+  test("Authenticated user with confirmed payment can cancel a shipment", () => {
     attachJiraIssue("AD-8");
     allure.tag("web", "regress", "regular", "smoke");
     allure.story("Manage shipments");
     attachMicroservice("Shipment");
-
-    await deleteNewEntity("pull request");
+    deleteNewEntity("pull request");
   });
 });
