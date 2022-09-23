@@ -13,7 +13,7 @@ test.describe("IssuesWebTest", () => {
     allure.label({ name: "layer", value: "e2e" });
     allure.owner("eroshenkoam");
     allure.feature("Support requests handling");
-    authorize();
+    await authorize();
   });
 
   test("Authenticated user must be able to create a support request with type Issue", () => {

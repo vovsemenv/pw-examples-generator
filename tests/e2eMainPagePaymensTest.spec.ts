@@ -8,7 +8,7 @@ test.describe("e2eManPageTests", () => {
     allure.label({ name: "layer", value: "e2e" });
     allure.owner("eroshenkoam");
     allure.feature("Payments widget on main page");
-    authorize();
+    await authorize();
   });
 
   notes.forEach((noteName) => {

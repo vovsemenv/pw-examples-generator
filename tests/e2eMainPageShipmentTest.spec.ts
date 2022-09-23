@@ -13,7 +13,7 @@ test.describe("ShipmentRequestsWebTest", () => {
     allure.label({ name: "layer", value: "e2e" });
     allure.owner("baev");
     allure.feature("Shipment Requests");
-    authorize();
+    await authorize();
   });
   
   test("Authenticated user with confirmed payment can request a shipment", () => {

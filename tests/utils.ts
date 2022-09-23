@@ -80,7 +80,7 @@ export const createNewEntity = async (entityName: "issue" | "shipment" | "paymen
     ).toContainEqual(newIssue);
   });
 
-export const deleteNewEntity = async (entityName: "issue" | "pull request" | "payment") =>
+export const deleteNewEntity = async (entityName: "issue" | "shipment" | "payment") =>
   await test.step(`Close ${entityName}`, async () => {
     const issuesList: typeof newIssue[] = [newIssue];
     await test.step(`Go to ${entityName} page`, async () => {
