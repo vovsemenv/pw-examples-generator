@@ -50,6 +50,13 @@ interface Payment {
 
 const newPayment = { name: "New payment", status: "created" } as Payment;
 
+interface Shipment {
+  name: "New shipment";
+  status: "created" | "closed";
+}
+
+const newShipment = { name: "New shipment", status: "created" } as Shipment;
+
 export const createNewEntity = async (entityName: "issue" | "shipment" | "payment") =>
   await test.step(`Create new ${entityName}`, async () => {
     const issuesList: typeof newIssue[] = [];
