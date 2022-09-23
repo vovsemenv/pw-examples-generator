@@ -16,7 +16,7 @@ test.describe("IssuesWebTest", () => {
     authorize();
   });
 
-  test("Authenticated user must be able to create a support request with type Issue", ()) => {
+  test("Authenticated user must be able to create a support request with type Issue", () => {
     allure.tag("web", "critical", "regress");
     attachJiraIssue("AD-5");
     allure.story("Managing support requests with type Issue");
