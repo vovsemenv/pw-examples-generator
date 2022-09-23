@@ -6,7 +6,7 @@ export const attachJiraIssue = (val: string) => {
 };
 
 export const attachMicroservice = (val: string) => {
-  allure.label({ name: "microservice", value: val });
+  allure.label({ name: "msrv", value: val });
 };
 
 const isTimeToThrow = () => {
