@@ -1,1 +1,1 @@
-export const notes = ["First Note", "Second Note"] as const;
+export const notes = ["First attempt", "Second attempt"] as const;
