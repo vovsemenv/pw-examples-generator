@@ -43,7 +43,14 @@ interface Issue {
 }
 const newIssue = { name: "New issue", status: "open" } as Issue;
 
-export const createNewEntity = async (entityName: "issue" | "pull request") =>
+interface Payment {
+  name: "New payment";
+  status: "created" | "closed";
+}
+
+const newPayment = { name: "New payment", status: "created" } as Payment;
+
+export const createNewEntity = async (entityName: "issue" | "shipment" | "payment") =>
   await test.step(`Create new ${entityName}`, async () => {
     const issuesList: typeof newIssue[] = [];
     expect(
@@ -53,7 +60,7 @@ export const createNewEntity = async (entityName: "issue" | "pull request") =>
     await test.step(`Go to ${entityName} page`, async () => {
       isTimeToThrow();
     });
-    await test.step(`Click to 'New ${entityName}' button`, async () => {});
+    await test.step(`Click 'New ${entityName}' button`, async () => {});
     await test.step(`Enter ${entityName} Info`, async () => {
       isTimeToThrow();
     });
@@ -66,7 +73,7 @@ export const createNewEntity = async (entityName: "issue" | "pull request") =>
     ).toContainEqual(newIssue);
   });
 
-export const deleteNewEntity = async (entityName: "issue" | "pull request") =>
+export const deleteNewEntity = async (entityName: "issue" | "pull request" | "payment") =>
   await test.step(`Close ${entityName}`, async () => {
     const issuesList: typeof newIssue[] = [newIssue];
     await test.step(`Go to ${entityName} page`, async () => {
@@ -77,7 +84,7 @@ export const deleteNewEntity = async (entityName: "issue" | "pull request") =>
       issuesList[0].status,
       `Check ${entityName} status before closing`
     ).toBe("open");
-    await test.step(`Click to '${entityName}' button`, async () => {});
+    await test.step(`Click '${entityName}' button`, async () => {});
     issuesList[0].status = "closed";
     expect(
       issuesList[0].status,
