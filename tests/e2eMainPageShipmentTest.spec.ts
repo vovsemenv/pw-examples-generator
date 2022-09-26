@@ -28,6 +28,6 @@ test.describe("ShipmentRequestsWebTest", () => {
     allure.tag("web", "regress", "regular", "smoke");
     allure.story("Manage shipments");
     attachMicroservice("Shipment");
-    deleteNewEntity("pull request");
+    deleteNewEntity("shipment");
   });
 });
