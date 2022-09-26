@@ -10,7 +10,7 @@ export const attachMicroservice = (val: string) => {
 };
 
 const isTimeToThrow = () => {
-  if (Math.random() > 0.95) {
+  if (Math.random() > 0.98) {
     throw new Error("net::ERR_CONNECTION_REFUSED");
   }
 };
