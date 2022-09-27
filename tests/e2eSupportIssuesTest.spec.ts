@@ -20,8 +20,8 @@ test.describe("IssuesWebTest", () => {
     attachJiraIssue("AD-5");
     allure.story("Managing support requests with type Issue");
     attachMicroservice("Support");
+    await createNewEntity("issue");
     await authorize();
-    createNewEntity("issue");
   });
 
   test("Authenticated user must be able to close existing support request with type Issue", async () => {
@@ -29,7 +29,7 @@ test.describe("IssuesWebTest", () => {
     attachJiraIssue("AD-6");
     allure.story("Managing support requests with type Issue");
     attachMicroservice("Support");
+    await deleteNewEntity("issue");
     await authorize();
-    deleteNewEntity("issue");
   });
 });
