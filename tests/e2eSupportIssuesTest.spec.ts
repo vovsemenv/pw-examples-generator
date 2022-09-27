@@ -31,6 +31,5 @@ test.describe("IssuesWebTest", () => {
     attachMicroservice("Support");
     await authorize();
     deleteNewEntity("issue");
-   
   });
 });
