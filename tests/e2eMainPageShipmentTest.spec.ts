@@ -22,7 +22,6 @@ test.describe("ShipmentRequestsWebTest", () => {
     attachMicroservice("Shipment");
     await authorize();
     createNewEntity("shipment");
-
   });
   test("Authenticated user with confirmed payment can cancel a shipment", async () => {
     attachJiraIssue("AD-8");
