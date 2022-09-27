@@ -10,8 +10,16 @@ export const attachMicroservice = (val: string) => {
 };
 
 const isTimeToThrow = () => {
-  if (Math.random() > 0.95) {
+  var failing:number = Math.random();
+
+  if (failing > 0.91 && failing <= 0.92) {
     throw new Error("net::ERR_CONNECTION_REFUSED");
+  }
+  if (failing >= 0.93 && failing <= 0.95) {
+    throw new Error("Element not found {selector: something}\n Expected: visible or transparent: visible or have css value opacity=0\n Timeout: 6000 ms");
+  }
+  if (failing >= 0.94 && failing <= 0.99) {
+    throw new Error("Test timeout of 30000ms exceeded.");
   }
 };
 
@@ -50,6 +58,13 @@ interface Payment {
 
 const newPayment = { name: "New payment", status: "created" } as Payment;
 
+interface Shipment {
+  name: "New shipment";
+  status: "created" | "closed";
+}
+
+const newShipment = { name: "New shipment", status: "created" } as Shipment;
+
 export const createNewEntity = async (entityName: "issue" | "shipment" | "payment") =>
   await test.step(`Create new ${entityName}`, async () => {
     const issuesList: typeof newIssue[] = [];
@@ -73,7 +88,7 @@ export const createNewEntity = async (entityName: "issue" | "shipment" | "paymen
     ).toContainEqual(newIssue);
   });
 
-export const deleteNewEntity = async (entityName: "issue" | "pull request" | "payment") =>
+export const deleteNewEntity = async (entityName: "issue" | "shipment" | "payment") =>
   await test.step(`Close ${entityName}`, async () => {
     const issuesList: typeof newIssue[] = [newIssue];
     await test.step(`Go to ${entityName} page`, async () => {
