@@ -20,15 +20,17 @@ test.describe("ShipmentRequestsWebTest", () => {
     attachJiraIssue("AD-7");
     allure.story("Manage shipments");
     attachMicroservice("Shipment");
-    createNewEntity("shipment");
     await authorize();
+    createNewEntity("shipment");
+
   });
   test("Authenticated user with confirmed payment can cancel a shipment", async () => {
     attachJiraIssue("AD-8");
     allure.tag("web", "regress", "regular", "smoke");
     allure.story("Manage shipments");
     attachMicroservice("Shipment");
-    deleteNewEntity("shipment");
     await authorize();
+    deleteNewEntity("shipment");
+
   });
 });
