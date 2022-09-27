@@ -72,7 +72,7 @@ export const createNewEntity = async (
 ) =>
   await test.step(`Create new ${entityName}`, async () => {
     const issuesList: typeof newIssue[] = [];
-    expect(
+    await expect(
       issuesList,
       `check ${entityName} count before creation`
     ).toHaveLength(0);
@@ -86,7 +86,7 @@ export const createNewEntity = async (
     await test.step(`Confirm new ${entityName} creation`, async () => {
       issuesList.push(newIssue);
     });
-    expect(
+    await expect(
       issuesList,
       `check if ${entityName} list contain new ${entityName}`
     ).toContainEqual(newIssue);
@@ -101,13 +101,13 @@ export const deleteNewEntity = async (
       isTimeToThrow();
     });
     await test.step(`Open new ${entityName} page`, async () => {});
-    expect(
+    await expect(
       issuesList[0].status,
       `Check ${entityName} status before closing`
     ).toBe("open");
     await test.step(`Click '${entityName}' button`, async () => {});
     issuesList[0].status = "closed";
-    expect(
+    await expect(
       issuesList[0].status,
       `Check ${entityName} status after closing`
     ).toBe("closed");
