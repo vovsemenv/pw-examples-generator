@@ -1,5 +1,7 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 
+import { testPlanFilter } from "allure-playwright/dist/testplan";
+
 const config: PlaywrightTestConfig = {
   testDir: "./tests",
   timeout: 30 * 1000,
@@ -17,6 +19,7 @@ const config: PlaywrightTestConfig = {
       name: "chromium",
     },
   ],
+  grep: testPlanFilter()
 };
 
 export default config;
