@@ -9,6 +9,10 @@ export const attachMicroservice = (val: string) => {
   allure.label("msrv", val);
 };
 
+export const manualTest = () => {
+  allure.label("ALLURE_MANUAL", "true");
+};
+
 const isTimeToThrow = () => {
   var failing: number = Math.random();
 
